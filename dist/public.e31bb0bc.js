@@ -31730,7 +31730,63 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"src/components/Title.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+},{}],"../node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":[function(require,module,exports) {
+function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+},{}],"../node_modules/@babel/runtime/helpers/nonIterableRest.js":[function(require,module,exports) {
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+module.exports = _nonIterableRest;
+},{}],"../node_modules/@babel/runtime/helpers/slicedToArray.js":[function(require,module,exports) {
+var arrayWithHoles = require("./arrayWithHoles");
+
+var iterableToArrayLimit = require("./iterableToArrayLimit");
+
+var nonIterableRest = require("./nonIterableRest");
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+},{"./arrayWithHoles":"../node_modules/@babel/runtime/helpers/arrayWithHoles.js","./iterableToArrayLimit":"../node_modules/@babel/runtime/helpers/iterableToArrayLimit.js","./nonIterableRest":"../node_modules/@babel/runtime/helpers/nonIterableRest.js"}],"src/components/Title.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31746,7 +31802,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Title = function Title(props) {
   return _react.default.createElement("div", {
     className: "title"
-  }, "Truffle React Simple Hello World");
+  }, props.titleToShow);
 };
 
 var _default = Title;
@@ -32520,63 +32576,7 @@ function _asyncToGenerator(fn) {
 }
 
 module.exports = _asyncToGenerator;
-},{}],"../node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-module.exports = _arrayWithHoles;
-},{}],"../node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":[function(require,module,exports) {
-function _iterableToArrayLimit(arr, i) {
-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-    return;
-  }
-
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-module.exports = _iterableToArrayLimit;
-},{}],"../node_modules/@babel/runtime/helpers/nonIterableRest.js":[function(require,module,exports) {
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
-}
-
-module.exports = _nonIterableRest;
-},{}],"../node_modules/@babel/runtime/helpers/slicedToArray.js":[function(require,module,exports) {
-var arrayWithHoles = require("./arrayWithHoles");
-
-var iterableToArrayLimit = require("./iterableToArrayLimit");
-
-var nonIterableRest = require("./nonIterableRest");
-
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
-}
-
-module.exports = _slicedToArray;
-},{"./arrayWithHoles":"../node_modules/@babel/runtime/helpers/arrayWithHoles.js","./iterableToArrayLimit":"../node_modules/@babel/runtime/helpers/iterableToArrayLimit.js","./nonIterableRest":"../node_modules/@babel/runtime/helpers/nonIterableRest.js"}],"../node_modules/web3/package.json":[function(require,module,exports) {
+},{}],"../node_modules/web3/package.json":[function(require,module,exports) {
 module.exports = {
   "_args": [["web3@1.2.4", "C:\\Users\\ANiJiT\\Documents\\truffle-hello"]],
   "_development": true,
@@ -99630,12 +99630,12 @@ module.exports = {
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x51e732B039088bA3c58a5ADb1FA302f952315C75",
-      "transactionHash": "0x7093dc041dfaeda40f58e70063d827c4a3788db21e880930935f2ff614d7a2b9"
+      "address": "0x9A1427162e8b6b87392489718da2622e3f3EA865",
+      "transactionHash": "0x34281a3b9ded73b4b7ba37860449306225dd7896e1f51fc5ded927513c3598ec"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-30T13:02:29.485Z",
+  "updatedAt": "2020-01-02T16:37:04.749Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
@@ -99670,6 +99670,8 @@ var Constants = function Constants() {
   this.BASE_URL = "http://localhost";
   this.BASE_PORT = 9545;
   this.ETH_URL = "".concat(this.BASE_URL, ":").concat(this.BASE_PORT);
+  this.USER_MOVE = 1;
+  this.COMPUTER_MOVE = 2;
 };
 
 exports.default = Constants;
@@ -99767,7 +99769,7 @@ var EthGreeting = function EthGreeting() {
 
 var _default = EthGreeting;
 exports.default = _default;
-},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","web3":"../node_modules/web3/src/index.js","../../abis/Hello.json":"abis/Hello.json","../Constants":"src/Constants.js"}],"src/App.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","web3":"../node_modules/web3/src/index.js","../../abis/Hello.json":"abis/Hello.json","../Constants":"src/Constants.js"}],"src/components/Box.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99775,31 +99777,167 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Box = function Box(props) {
+  // extracting necessary fields from the props
+  var value = props.value,
+      rowIndex = props.rowIndex,
+      colIndex = props.colIndex,
+      handleOnClick = props.handleOnClick;
+  var boxIndex = rowIndex + colIndex + 1;
+  var boxStyle = boxIndex % 2 === 0 ? 'even-box box' : 'odd-box box';
+  return _react.default.createElement("div", {
+    id: "".concat(rowIndex, "-").concat(colIndex),
+    className: boxStyle,
+    onClick: handleOnClick
+  }, value == 1 ? 'X' : value == 2 ? 'O' : '');
+};
+
+var _default = Box;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"src/components/TicTacToe.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Box = _interopRequireDefault(require("./Box"));
+
+var _Constants = _interopRequireDefault(require("../Constants"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// constants
+var TicTacToe = function TicTacToe(props) {
+  var _useState = (0, _react.useState)([[0, 2, 0], [1, 0, 0], [0, 0, 1]]),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      box = _useState2[0],
+      setBox = _useState2[1]; // initialize all the constants 
+
+
+  var allConstants = new _Constants.default(); // handle the on click event
+
+  var handleOnClick = function handleOnClick(event) {
+    var id = event.target.id;
+
+    var _generateIndices = generateIndices(id),
+        _generateIndices2 = (0, _slicedToArray2.default)(_generateIndices, 2),
+        rowIndex = _generateIndices2[0],
+        colIndex = _generateIndices2[1];
+
+    var isEmpty = checkIfEmpty(rowIndex, colIndex);
+
+    if (isEmpty === true) {
+      captureUserMove(rowIndex, colIndex);
+    }
+  }; // generate row and col index
+
+
+  var generateIndices = function generateIndices(id) {
+    var _id$split = id.split('-'),
+        _id$split2 = (0, _slicedToArray2.default)(_id$split, 2),
+        rowIndex = _id$split2[0],
+        colIndex = _id$split2[1];
+
+    rowIndex = parseInt(rowIndex);
+    colIndex = parseInt(colIndex);
+    return [rowIndex, colIndex];
+  }; // check if it is an empty slot
+
+
+  var checkIfEmpty = function checkIfEmpty(rowIndex, colIndex) {
+    if (box[rowIndex][colIndex] === 0) {
+      return true;
+    }
+
+    return false;
+  }; // capture user's move by set it to 1 
+
+
+  var captureUserMove = function captureUserMove(rowIndex, colIndex) {
+    var boxNew = JSON.parse(JSON.stringify(box));
+    boxNew[rowIndex][colIndex] = allConstants.USER_MOVE;
+    setBox(boxNew);
+  }; // render the box contents
+
+
+  return _react.default.createElement("div", {
+    className: "box-container"
+  }, box.map(function (row, rowIndex) {
+    return _react.default.createElement("div", {
+      className: "row-container",
+      key: rowIndex
+    }, row.map(function (box, colIndex) {
+      return _react.default.createElement(_Box.default, {
+        value: box,
+        rowIndex: rowIndex,
+        colIndex: colIndex,
+        handleOnClick: handleOnClick,
+        key: colIndex
+      });
+    }));
+  }));
+};
+
+var _default = TicTacToe;
+exports.default = _default;
+},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./Box":"src/components/Box.js","../Constants":"src/Constants.js"}],"src/App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _react = _interopRequireWildcard(require("react"));
 
 var _Title = _interopRequireDefault(require("./components/Title"));
 
 var _EthGreeting = _interopRequireDefault(require("./components/EthGreeting"));
 
-require("./styles.css");
+var _TicTacToe = _interopRequireDefault(require("./components/TicTacToe"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+require("./styles.css");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 // dependencies
 // css
 var App = function App(props) {
+  var _useState = (0, _react.useState)('Truffle React Simple Tic Tac Toe'),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      title = _useState2[0],
+      setTitle = _useState2[1];
+
   return _react.default.createElement("div", {
     className: "container"
-  }, _react.default.createElement(_Title.default, null), _react.default.createElement(_EthGreeting.default, null));
+  }, _react.default.createElement(_Title.default, {
+    titleToShow: title
+  }), _react.default.createElement(_TicTacToe.default, null));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./components/Title":"src/components/Title.js","./components/EthGreeting":"src/components/EthGreeting.js","./styles.css":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js"}],"index.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./components/Title":"src/components/Title.js","./components/EthGreeting":"src/components/EthGreeting.js","./components/TicTacToe":"src/components/TicTacToe.js","./styles.css":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
