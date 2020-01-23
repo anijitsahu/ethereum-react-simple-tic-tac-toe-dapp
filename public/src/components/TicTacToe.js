@@ -11,6 +11,8 @@ const TicTacToe = (props) => {
         [0, 0, 0]
     ])
     const [userTurn, setUserTurn] = useState(false)
+    const [isBoxFilled, setIsBoxFilled] = useState(false)
+    const [result, setResult] = useState('')
 
     useEffect(() => {
         checkForMatch()
@@ -24,10 +26,14 @@ const TicTacToe = (props) => {
     // handle the onClick event
     const handleOnClick = (event) => {
         const { id } = event.target
-        const [rowIndex, colIndex] = generateIndices(id)
-        let isEmpty = checkIfEmpty(rowIndex, colIndex)
-        if (isEmpty === true) {
-            captureUserMove(rowIndex, colIndex)
+        if (!isBoxFilled) {
+            const [rowIndex, colIndex] = generateIndices(id)
+            let isEmpty = checkIfEmptyCell(rowIndex, colIndex)
+            if (isEmpty === true) {
+                captureUserMove(rowIndex, colIndex)
+            }
+        } else {
+            showResult()
         }
     }
 
@@ -40,7 +46,7 @@ const TicTacToe = (props) => {
     }
 
     // check if it is an empty slot
-    const checkIfEmpty = (rowIndex, colIndex) => {
+    const checkIfEmptyCell = (rowIndex, colIndex) => {
         if (box[rowIndex][colIndex] === 0) {
             return true
         }
@@ -56,18 +62,16 @@ const TicTacToe = (props) => {
     }
 
     // check all the cells are filled or not
-    const checkIfFilled = () => {
-        let gridNew = []
-        grid.map((ele) => {
-            gridNew.push(...ele)
-        })
-
-        // console.log("gridNew", gridNew)
-        let isFilled = true
-        if (gridNew.indexOf(0) > -1) {
-            isFilled = false
+    const checkIfBoxFilled = () => {
+        for (let row = 0; row < allConstants.GRID_LENGTH; row++) {
+            for (let col = 0; col < allConstants.GRID_LENGTH; col++) {
+                if (checkIfEmptyCell(row, col)) {
+                    setIsBoxFilled(true)
+                    return true
+                }
+            }
         }
-        return isFilled
+        return false
     }
 
     // check if a match found
@@ -102,7 +106,6 @@ const TicTacToe = (props) => {
             }
         }
 
-        // console.log("otherDiagonal", otherDiagonal)
         checkWinner(principalDiagonal)
         checkWinner(otherDiagonal)
     }
@@ -112,29 +115,19 @@ const TicTacToe = (props) => {
         const allEqual = str.split('').every((char) => { return (char != allConstants.EMPTY_CELL) && (char == str[0]) })
         if (str && allEqual) {
             const winner = (str[0] == allConstants.USER_MOVE) ? allConstants.USER_MOVE : allConstants.COMPUTER_MOVE
-            console.log(winner)
             showResult(winner)
         }
     }
 
-    // show the result
-    const showResult = (winner) => {
-        let content = (winner == allConstants.USER_MOVE) ? "You won" : "Computer won"
-
-        if (!winner) {
-            content = "GAME TIED"
-        }
-        console.log('RESULT of the game is', content)
-    }
-
     // function to capture how Computer gives the moves
-    // generate Random column and row number
     const computerPlays = () => {
         while (true && !userTurn) {
+            // generate Random column and row number
             let randomCol = Math.floor(Math.random() * GRID_LENGTH) + 0
             let randomRow = Math.floor(Math.random() * GRID_LENGTH) + 0
             console.log("random cell generated", randomCol, " ", randomRow)
-            if (checkIfEmpty(randomRow, randomCol)) {
+
+            if (checkIfEmptyCell(randomRow, randomCol)) {
                 const boxNew = JSON.parse(JSON.stringify(box))
                 boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE
                 setBox(boxNew)
@@ -144,22 +137,27 @@ const TicTacToe = (props) => {
         }
     }
 
+    // show the result
+    const showResult = (winner) => {
+        let content = !winner ? "GAME TIED" : (winner == allConstants.USER_MOVE) ? "You won" : "Computer won"
+        console.log('RESULT of the game is', result)
+        setIsBoxFilled(true) 
+        !result ? setResult(content) : result
+    }
+
     // render the box contents
     return (
         <div className="box-container">
         {
+        	result ? result
+        	:
         	box.map((row, rowIndex)=> {
         		return (
         			<div className="row-container" key={rowIndex}>
         			{
         				row.map((box, colIndex)=> {
         					return (
-        						<Box 
-        						value={box} 
-        						rowIndex={rowIndex} 
-        						colIndex={colIndex} 
-        						handleOnClick={handleOnClick}
-        						key={colIndex} />)
+        						<Box value={box} rowIndex={rowIndex} colIndex={colIndex} handleOnClick={handleOnClick} key={colIndex} />)
         				})
         			}
         			</div>

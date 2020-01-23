@@ -99771,43 +99771,7 @@ var EthGreeting = function EthGreeting() {
 
 var _default = EthGreeting;
 exports.default = _default;
-},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","web3":"../node_modules/web3/src/index.js","../../abis/Hello.json":"abis/Hello.json","../Constants":"src/Constants.js"}],"../node_modules/@babel/runtime/helpers/arrayWithoutHoles.js":[function(require,module,exports) {
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-
-    return arr2;
-  }
-}
-
-module.exports = _arrayWithoutHoles;
-},{}],"../node_modules/@babel/runtime/helpers/iterableToArray.js":[function(require,module,exports) {
-function _iterableToArray(iter) {
-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
-}
-
-module.exports = _iterableToArray;
-},{}],"../node_modules/@babel/runtime/helpers/nonIterableSpread.js":[function(require,module,exports) {
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-module.exports = _nonIterableSpread;
-},{}],"../node_modules/@babel/runtime/helpers/toConsumableArray.js":[function(require,module,exports) {
-var arrayWithoutHoles = require("./arrayWithoutHoles");
-
-var iterableToArray = require("./iterableToArray");
-
-var nonIterableSpread = require("./nonIterableSpread");
-
-function _toConsumableArray(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
-}
-
-module.exports = _toConsumableArray;
-},{"./arrayWithoutHoles":"../node_modules/@babel/runtime/helpers/arrayWithoutHoles.js","./iterableToArray":"../node_modules/@babel/runtime/helpers/iterableToArray.js","./nonIterableSpread":"../node_modules/@babel/runtime/helpers/nonIterableSpread.js"}],"src/components/Box.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","web3":"../node_modules/web3/src/index.js","../../abis/Hello.json":"abis/Hello.json","../Constants":"src/Constants.js"}],"src/components/Box.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99844,8 +99808,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
-
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
@@ -99872,6 +99834,16 @@ var TicTacToe = function TicTacToe(props) {
       userTurn = _useState4[0],
       setUserTurn = _useState4[1];
 
+  var _useState5 = (0, _react.useState)(false),
+      _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
+      isBoxFilled = _useState6[0],
+      setIsBoxFilled = _useState6[1];
+
+  var _useState7 = (0, _react.useState)(''),
+      _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
+      result = _useState8[0],
+      setResult = _useState8[1];
+
   (0, _react.useEffect)(function () {
     checkForMatch();
     computerPlays();
@@ -99883,15 +99855,19 @@ var TicTacToe = function TicTacToe(props) {
   var handleOnClick = function handleOnClick(event) {
     var id = event.target.id;
 
-    var _generateIndices = generateIndices(id),
-        _generateIndices2 = (0, _slicedToArray2.default)(_generateIndices, 2),
-        rowIndex = _generateIndices2[0],
-        colIndex = _generateIndices2[1];
+    if (!isBoxFilled) {
+      var _generateIndices = generateIndices(id),
+          _generateIndices2 = (0, _slicedToArray2.default)(_generateIndices, 2),
+          rowIndex = _generateIndices2[0],
+          colIndex = _generateIndices2[1];
 
-    var isEmpty = checkIfEmpty(rowIndex, colIndex);
+      var isEmpty = checkIfEmptyCell(rowIndex, colIndex);
 
-    if (isEmpty === true) {
-      captureUserMove(rowIndex, colIndex);
+      if (isEmpty === true) {
+        captureUserMove(rowIndex, colIndex);
+      }
+    } else {
+      showResult();
     }
   }; // generate row and col index
 
@@ -99908,7 +99884,7 @@ var TicTacToe = function TicTacToe(props) {
   }; // check if it is an empty slot
 
 
-  var checkIfEmpty = function checkIfEmpty(rowIndex, colIndex) {
+  var checkIfEmptyCell = function checkIfEmptyCell(rowIndex, colIndex) {
     if (box[rowIndex][colIndex] === 0) {
       return true;
     }
@@ -99925,19 +99901,17 @@ var TicTacToe = function TicTacToe(props) {
   }; // check all the cells are filled or not
 
 
-  var checkIfFilled = function checkIfFilled() {
-    var gridNew = [];
-    grid.map(function (ele) {
-      gridNew.push.apply(gridNew, (0, _toConsumableArray2.default)(ele));
-    }); // console.log("gridNew", gridNew)
-
-    var isFilled = true;
-
-    if (gridNew.indexOf(0) > -1) {
-      isFilled = false;
+  var checkIfBoxFilled = function checkIfBoxFilled() {
+    for (var row = 0; row < allConstants.GRID_LENGTH; row++) {
+      for (var col = 0; col < allConstants.GRID_LENGTH; col++) {
+        if (checkIfEmptyCell(row, col)) {
+          setIsBoxFilled(true);
+          return true;
+        }
+      }
     }
 
-    return isFilled;
+    return false;
   }; // check if a match found
 
 
@@ -99975,8 +99949,7 @@ var TicTacToe = function TicTacToe(props) {
           otherDiagonal = "".concat(otherDiagonal).concat(box[_i2][j]);
         }
       }
-    } // console.log("otherDiagonal", otherDiagonal)
-
+    }
 
     checkWinner(principalDiagonal);
     checkWinner(otherDiagonal);
@@ -99990,31 +99963,19 @@ var TicTacToe = function TicTacToe(props) {
 
     if (str && allEqual) {
       var winner = str[0] == allConstants.USER_MOVE ? allConstants.USER_MOVE : allConstants.COMPUTER_MOVE;
-      console.log(winner);
       showResult(winner);
     }
-  }; // show the result
-
-
-  var showResult = function showResult(winner) {
-    var content = winner == allConstants.USER_MOVE ? "You won" : "Computer won";
-
-    if (!winner) {
-      content = "GAME TIED";
-    }
-
-    console.log('RESULT of the game is', content);
   }; // function to capture how Computer gives the moves
-  // generate Random column and row number
 
 
   var computerPlays = function computerPlays() {
     while (true && !userTurn) {
+      // generate Random column and row number
       var randomCol = Math.floor(Math.random() * GRID_LENGTH) + 0;
       var randomRow = Math.floor(Math.random() * GRID_LENGTH) + 0;
       console.log("random cell generated", randomCol, " ", randomRow);
 
-      if (checkIfEmpty(randomRow, randomCol)) {
+      if (checkIfEmptyCell(randomRow, randomCol)) {
         var boxNew = JSON.parse(JSON.stringify(box));
         boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE;
         setBox(boxNew);
@@ -100022,12 +99983,20 @@ var TicTacToe = function TicTacToe(props) {
         return;
       }
     }
+  }; // show the result
+
+
+  var showResult = function showResult(winner) {
+    var content = !winner ? "GAME TIED" : winner == allConstants.USER_MOVE ? "You won" : "Computer won";
+    console.log('RESULT of the game is', result);
+    setIsBoxFilled(true);
+    !result ? setResult(content) : result;
   }; // render the box contents
 
 
   return _react.default.createElement("div", {
     className: "box-container"
-  }, box.map(function (row, rowIndex) {
+  }, result ? result : box.map(function (row, rowIndex) {
     return _react.default.createElement("div", {
       className: "row-container",
       key: rowIndex
@@ -100045,7 +100014,7 @@ var TicTacToe = function TicTacToe(props) {
 
 var _default = TicTacToe;
 exports.default = _default;
-},{"@babel/runtime/helpers/toConsumableArray":"../node_modules/@babel/runtime/helpers/toConsumableArray.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./Box":"src/components/Box.js","../Constants":"src/Constants.js"}],"src/App.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./Box":"src/components/Box.js","../Constants":"src/Constants.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
