@@ -99672,6 +99672,8 @@ var Constants = function Constants() {
   this.ETH_URL = "".concat(this.BASE_URL, ":").concat(this.BASE_PORT);
   this.USER_MOVE = 1;
   this.COMPUTER_MOVE = 2;
+  this.EMPTY_CELL = 0;
+  this.GRID_LENGTH = 3;
 };
 
 exports.default = Constants;
@@ -99769,7 +99771,43 @@ var EthGreeting = function EthGreeting() {
 
 var _default = EthGreeting;
 exports.default = _default;
-},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","web3":"../node_modules/web3/src/index.js","../../abis/Hello.json":"abis/Hello.json","../Constants":"src/Constants.js"}],"src/components/Box.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","web3":"../node_modules/web3/src/index.js","../../abis/Hello.json":"abis/Hello.json","../Constants":"src/Constants.js"}],"../node_modules/@babel/runtime/helpers/arrayWithoutHoles.js":[function(require,module,exports) {
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  }
+}
+
+module.exports = _arrayWithoutHoles;
+},{}],"../node_modules/@babel/runtime/helpers/iterableToArray.js":[function(require,module,exports) {
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+
+module.exports = _iterableToArray;
+},{}],"../node_modules/@babel/runtime/helpers/nonIterableSpread.js":[function(require,module,exports) {
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+module.exports = _nonIterableSpread;
+},{}],"../node_modules/@babel/runtime/helpers/toConsumableArray.js":[function(require,module,exports) {
+var arrayWithoutHoles = require("./arrayWithoutHoles");
+
+var iterableToArray = require("./iterableToArray");
+
+var nonIterableSpread = require("./nonIterableSpread");
+
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
+},{"./arrayWithoutHoles":"../node_modules/@babel/runtime/helpers/arrayWithoutHoles.js","./iterableToArray":"../node_modules/@babel/runtime/helpers/iterableToArray.js","./nonIterableSpread":"../node_modules/@babel/runtime/helpers/nonIterableSpread.js"}],"src/components/Box.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99806,6 +99844,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
@@ -99822,13 +99862,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // constants
 var TicTacToe = function TicTacToe(props) {
-  var _useState = (0, _react.useState)([[0, 2, 0], [1, 0, 0], [0, 0, 1]]),
+  var _useState = (0, _react.useState)([[0, 0, 0], [0, 0, 0], [0, 0, 0]]),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
       box = _useState2[0],
-      setBox = _useState2[1]; // initialize all the constants 
+      setBox = _useState2[1];
 
+  var _useState3 = (0, _react.useState)(false),
+      _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
+      userTurn = _useState4[0],
+      setUserTurn = _useState4[1];
 
-  var allConstants = new _Constants.default(); // handle the on click event
+  (0, _react.useEffect)(function () {
+    checkForMatch();
+    computerPlays();
+  }, [box]); // initialize all the constants 
+
+  var allConstants = new _Constants.default();
+  var GRID_LENGTH = allConstants.GRID_LENGTH; // handle the onClick event
 
   var handleOnClick = function handleOnClick(event) {
     var id = event.target.id;
@@ -99871,6 +99921,107 @@ var TicTacToe = function TicTacToe(props) {
     var boxNew = JSON.parse(JSON.stringify(box));
     boxNew[rowIndex][colIndex] = allConstants.USER_MOVE;
     setBox(boxNew);
+    setUserTurn(false);
+  }; // check all the cells are filled or not
+
+
+  var checkIfFilled = function checkIfFilled() {
+    var gridNew = [];
+    grid.map(function (ele) {
+      gridNew.push.apply(gridNew, (0, _toConsumableArray2.default)(ele));
+    }); // console.log("gridNew", gridNew)
+
+    var isFilled = true;
+
+    if (gridNew.indexOf(0) > -1) {
+      isFilled = false;
+    }
+
+    return isFilled;
+  }; // check if a match found
+
+
+  var checkForMatch = function checkForMatch() {
+    // for a Horizontal match 
+    for (var i = 0; i < GRID_LENGTH; i++) {
+      var rowStr = box[i].join('');
+      checkWinner(rowStr);
+    } // for a vertical match
+
+
+    var boxTranspose = box[0].map(function (col, i) {
+      return box.map(function (row) {
+        return row[i];
+      });
+    });
+
+    for (var _i = 0; _i < GRID_LENGTH; _i++) {
+      var colStr = boxTranspose[_i].join('');
+
+      checkWinner(colStr);
+    } // for a diagonal match
+
+
+    var principalDiagonal = '';
+    var otherDiagonal = '';
+
+    for (var _i2 = 0; _i2 < GRID_LENGTH; _i2++) {
+      for (var j = 0; j < GRID_LENGTH; j++) {
+        if (_i2 == j) {
+          principalDiagonal = "".concat(principalDiagonal).concat(box[_i2][j]);
+        }
+
+        if (_i2 + j + 1 == GRID_LENGTH) {
+          otherDiagonal = "".concat(otherDiagonal).concat(box[_i2][j]);
+        }
+      }
+    } // console.log("otherDiagonal", otherDiagonal)
+
+
+    checkWinner(principalDiagonal);
+    checkWinner(otherDiagonal);
+  }; // function to check who is the winner
+
+
+  var checkWinner = function checkWinner(str) {
+    var allEqual = str.split('').every(function (char) {
+      return char != allConstants.EMPTY_CELL && char == str[0];
+    });
+
+    if (str && allEqual) {
+      var winner = str[0] == allConstants.USER_MOVE ? allConstants.USER_MOVE : allConstants.COMPUTER_MOVE;
+      console.log(winner);
+      showResult(winner);
+    }
+  }; // show the result
+
+
+  var showResult = function showResult(winner) {
+    var content = winner == allConstants.USER_MOVE ? "You won" : "Computer won";
+
+    if (!winner) {
+      content = "GAME TIED";
+    }
+
+    console.log('RESULT of the game is', content);
+  }; // function to capture how Computer gives the moves
+  // generate Random column and row number
+
+
+  var computerPlays = function computerPlays() {
+    while (true && !userTurn) {
+      var randomCol = Math.floor(Math.random() * GRID_LENGTH) + 0;
+      var randomRow = Math.floor(Math.random() * GRID_LENGTH) + 0;
+      console.log("random cell generated", randomCol, " ", randomRow);
+
+      if (checkIfEmpty(randomRow, randomCol)) {
+        var boxNew = JSON.parse(JSON.stringify(box));
+        boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE;
+        setBox(boxNew);
+        setUserTurn(true);
+        return;
+      }
+    }
   }; // render the box contents
 
 
@@ -99894,7 +100045,7 @@ var TicTacToe = function TicTacToe(props) {
 
 var _default = TicTacToe;
 exports.default = _default;
-},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./Box":"src/components/Box.js","../Constants":"src/Constants.js"}],"src/App.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/toConsumableArray":"../node_modules/@babel/runtime/helpers/toConsumableArray.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./Box":"src/components/Box.js","../Constants":"src/Constants.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

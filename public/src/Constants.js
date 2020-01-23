@@ -6,5 +6,7 @@ export default class Constants {
         this.ETH_URL = `${this.BASE_URL}:${this.BASE_PORT}`
         this.USER_MOVE = 1
         this.COMPUTER_MOVE = 2
+        this.EMPTY_CELL = 0
+        this.GRID_LENGTH = 3
     }
 }
