@@ -21,8 +21,8 @@ contract TicTacToe {
   }
   
   // save current move by user / computer  
-  function saveCurrentMove(uint rowVal, uint columnVal, uint move) public {
-      box[rowVal][columnVal] = move;
+  function saveCurrentMove(uint [3][3] memory boxReceived) public {
+      box = boxReceived;
   }
   
   // get the current box

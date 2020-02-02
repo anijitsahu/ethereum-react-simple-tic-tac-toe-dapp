@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Box from './Box'
+import useEthConnector from './EthConnector'
 
-// constants
 import Constants from '../Constants'
 
 const TicTacToe = (props) => {
-    const [box, setBox] = useState([
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
-    ])
-    const [userTurn, setUserTurn] = useState(false)
+    // const [box, setBox] = useState([])
+    const [box, getBox, saveBox] = useEthConnector()
+    const [userTurn, setUserTurn] = useState(true)
     const [isBoxFilled, setIsBoxFilled] = useState(false)
     const [result, setResult] = useState('')
+    const [isBoxLoaded, setBoxLoaded] = useState(false)
 
     useEffect(() => {
-        checkForMatch()
-        computerPlays()
-    }, [box])
+        if (!isBoxLoaded) {
+            getBox()
+            setBoxLoaded(true)
+        }
+        if (Array.isArray(box) && !userTurn) {
+            checkForMatch()
+            computerPlays()
+        }
+    })
 
     // initialize all the constants 
     const allConstants = new Constants()
@@ -26,6 +30,7 @@ const TicTacToe = (props) => {
     // handle the onClick event
     const handleOnClick = (event) => {
         const { id } = event.target
+        console.log('code comes here')
         if (!isBoxFilled) {
             const [rowIndex, colIndex] = generateIndices(id)
             let isEmpty = checkIfEmptyCell(rowIndex, colIndex)
@@ -55,6 +60,7 @@ const TicTacToe = (props) => {
 
     // capture user's move by set it to 1 
     const captureUserMove = (rowIndex, colIndex) => {
+    	console.log('Code for user move')
         const boxNew = JSON.parse(JSON.stringify(box))
         boxNew[rowIndex][colIndex] = allConstants.USER_MOVE
         setBox(boxNew)
@@ -141,7 +147,9 @@ const TicTacToe = (props) => {
     const showResult = (winner) => {
         let content = !winner ? "GAME TIED" : (winner == allConstants.USER_MOVE) ? "You won" : "Computer won"
         console.log('RESULT of the game is', result)
-        setIsBoxFilled(true) 
+        setIsBoxFilled(true);
+
+        // if result not defined set it 
         !result ? setResult(content) : result
     }
 
@@ -151,6 +159,7 @@ const TicTacToe = (props) => {
         {
         	result ? result
         	:
+        	Array.isArray(box) ? 
         	box.map((row, rowIndex)=> {
         		return (
         			<div className="row-container" key={rowIndex}>
@@ -163,6 +172,7 @@ const TicTacToe = (props) => {
         			</div>
         		)
         	})
+        	: 'box is loading...'
         }
     	</div>
     )
