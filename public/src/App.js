@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 
 // component dependencies
 import Title from './components/Title'
-import EthGreeting from './components/EthGreeting'
 import TicTacToe from './components/TicTacToe'
 
 // css

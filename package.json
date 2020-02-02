@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "parcel serve public/index.html --no-cache --no-source-maps --no-hmr --port 8081",
-    "build": "parcel build public/index.html --no-cache --no-source-maps && parcel serve public/index.html --port 9545"
+    "dev": "parcel serve public/index.html --no-hmr --port 8081"
   },
   "keywords": [],
   "author": "",

@@ -31807,6 +31807,35 @@ var Title = function Title(props) {
 
 var _default = Title;
 exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"src/components/Box.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Box = function Box(props) {
+  // extracting necessary fields from the props
+  var value = props.value,
+      rowIndex = props.rowIndex,
+      colIndex = props.colIndex,
+      handleOnClick = props.handleOnClick;
+  var boxIndex = rowIndex + colIndex + 1;
+  var boxStyle = boxIndex % 2 === 0 ? 'even-box box' : 'odd-box box';
+  return _react.default.createElement("div", {
+    id: "".concat(rowIndex, "-").concat(colIndex),
+    className: boxStyle,
+    onClick: handleOnClick
+  }, value == 1 ? 'X' : value == 2 ? 'O' : '');
+};
+
+var _default = Box;
+exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"../node_modules/@babel/runtime/node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -53828,7 +53857,7 @@ var ProgressEvent = /** @class */ (function () {
     return ProgressEvent;
 }());
 exports.ProgressEvent = ProgressEvent;
-//# sourceMappingURL=progress-event.js.map
+
 },{}],"../node_modules/xhr2-cookies/dist/errors.js":[function(require,module,exports) {
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -53874,7 +53903,7 @@ var SyntaxError = /** @class */ (function (_super) {
     return SyntaxError;
 }(Error));
 exports.SyntaxError = SyntaxError;
-//# sourceMappingURL=errors.js.map
+
 },{}],"../node_modules/xhr2-cookies/dist/xml-http-request-event-target.js":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -53916,7 +53945,7 @@ var XMLHttpRequestEventTarget = /** @class */ (function () {
     return XMLHttpRequestEventTarget;
 }());
 exports.XMLHttpRequestEventTarget = XMLHttpRequestEventTarget;
-//# sourceMappingURL=xml-http-request-event-target.js.map
+
 },{}],"../node_modules/xhr2-cookies/dist/xml-http-request-upload.js":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 "use strict";
@@ -53996,7 +54025,7 @@ var XMLHttpRequestUpload = /** @class */ (function (_super) {
     return XMLHttpRequestUpload;
 }(xml_http_request_event_target_1.XMLHttpRequestEventTarget));
 exports.XMLHttpRequestUpload = XMLHttpRequestUpload;
-//# sourceMappingURL=xml-http-request-upload.js.map
+
 },{"./xml-http-request-event-target":"../node_modules/xhr2-cookies/dist/xml-http-request-event-target.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../node_modules/cookiejar/cookiejar.js":[function(require,module,exports) {
 /* jshint node: true */
 (function () {
@@ -54724,7 +54753,7 @@ exports.XMLHttpRequest = XMLHttpRequest;
 XMLHttpRequest.prototype.nodejsHttpAgent = http.globalAgent;
 XMLHttpRequest.prototype.nodejsHttpsAgent = https.globalAgent;
 XMLHttpRequest.prototype.nodejsBaseUrl = null;
-//# sourceMappingURL=xml-http-request.js.map
+
 },{"http":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/index.js","https":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/https-browserify/index.js","os":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/os-browserify/browser.js","url":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/url.js","./progress-event":"../node_modules/xhr2-cookies/dist/progress-event.js","./errors":"../node_modules/xhr2-cookies/dist/errors.js","./xml-http-request-event-target":"../node_modules/xhr2-cookies/dist/xml-http-request-event-target.js","./xml-http-request-upload":"../node_modules/xhr2-cookies/dist/xml-http-request-upload.js","cookiejar":"../node_modules/cookiejar/cookiejar.js","process":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../node_modules/xhr2-cookies/dist/index.js":[function(require,module,exports) {
 "use strict";
 function __export(m) {
@@ -54734,7 +54763,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./xml-http-request"));
 var xml_http_request_event_target_1 = require("./xml-http-request-event-target");
 exports.XMLHttpRequestEventTarget = xml_http_request_event_target_1.XMLHttpRequestEventTarget;
-//# sourceMappingURL=index.js.map
+
 },{"./xml-http-request":"../node_modules/xhr2-cookies/dist/xml-http-request.js","./xml-http-request-event-target":"../node_modules/xhr2-cookies/dist/xml-http-request-event-target.js"}],"../node_modules/web3-providers-http/src/index.js":[function(require,module,exports) {
 /*
     This file is part of web3.js.
@@ -91547,7 +91576,7 @@ function toBuffer(v) {
     }
     return v;
 }
-//# sourceMappingURL=index.js.map
+
 },{"bn.js":"../node_modules/bn.js/lib/bn.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../node_modules/ethereumjs-util/dist/constants.js":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 "use strict";
@@ -91585,7 +91614,7 @@ exports.KECCAK256_RLP_S = '56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622
  * Keccak-256 hash of the RLP of null
  */
 exports.KECCAK256_RLP = Buffer.from(exports.KECCAK256_RLP_S, 'hex');
-//# sourceMappingURL=constants.js.map
+
 },{"bn.js":"../node_modules/bn.js/lib/bn.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/assert/node_modules/util/support/isBufferBrowser.js":[function(require,module,exports) {
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
@@ -92877,7 +92906,7 @@ exports.baToJSON = function (ba) {
         return array;
     }
 };
-//# sourceMappingURL=bytes.js.map
+
 },{"ethjs-util":"../node_modules/ethjs-util/lib/index.js","bn.js":"../node_modules/bn.js/lib/bn.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../node_modules/keccak/lib/api/keccak.js":[function(require,module,exports) {
 
 'use strict';
@@ -93435,7 +93464,7 @@ exports.ripemd160 = function (a, padded) {
 exports.rlphash = function (a) {
     return exports.keccak(rlp.encode(a));
 };
-//# sourceMappingURL=hash.js.map
+
 },{"keccak":"../node_modules/keccak/js.js","create-hash":"../node_modules/create-hash/browser.js","ethjs-util":"../node_modules/ethjs-util/lib/index.js","rlp":"../node_modules/rlp/dist/index.js","./bytes":"../node_modules/ethereumjs-util/dist/bytes.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../node_modules/ethereumjs-util/dist/account.js":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 "use strict";
@@ -93604,7 +93633,7 @@ exports.importPublic = function (publicKey) {
     }
     return publicKey;
 };
-//# sourceMappingURL=account.js.map
+
 },{"assert":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/assert/assert.js","ethjs-util":"../node_modules/ethjs-util/lib/index.js","secp256k1":"../node_modules/secp256k1/elliptic.js","bn.js":"../node_modules/bn.js/lib/bn.js","./bytes":"../node_modules/ethereumjs-util/dist/bytes.js","./hash":"../node_modules/ethereumjs-util/dist/hash.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../node_modules/ethereumjs-util/dist/signature.js":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 "use strict";
@@ -93712,7 +93741,7 @@ function calculateSigRecovery(v, chainId) {
 function isValidSigRecovery(recovery) {
     return recovery === 0 || recovery === 1;
 }
-//# sourceMappingURL=signature.js.map
+
 },{"secp256k1":"../node_modules/secp256k1/elliptic.js","bn.js":"../node_modules/bn.js/lib/bn.js","./bytes":"../node_modules/ethereumjs-util/dist/bytes.js","./hash":"../node_modules/ethereumjs-util/dist/hash.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../node_modules/ethereumjs-util/dist/object.js":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 "use strict";
@@ -93819,7 +93848,7 @@ exports.defineProperties = function (self, fields, data) {
         }
     }
 };
-//# sourceMappingURL=object.js.map
+
 },{"assert":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/assert/assert.js","ethjs-util":"../node_modules/ethjs-util/lib/index.js","rlp":"../node_modules/rlp/dist/index.js","./bytes":"../node_modules/ethereumjs-util/dist/bytes.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../node_modules/ethereumjs-util/dist/index.js":[function(require,module,exports) {
 "use strict";
 function __export(m) {
@@ -93858,7 +93887,7 @@ __export(require("./bytes"));
  * Function for definining properties on an object
  */
 __export(require("./object"));
-//# sourceMappingURL=index.js.map
+
 },{"secp256k1":"../node_modules/secp256k1/elliptic.js","ethjs-util":"../node_modules/ethjs-util/lib/index.js","bn.js":"../node_modules/bn.js/lib/bn.js","rlp":"../node_modules/rlp/dist/index.js","./constants":"../node_modules/ethereumjs-util/dist/constants.js","./account":"../node_modules/ethereumjs-util/dist/account.js","./hash":"../node_modules/ethereumjs-util/dist/hash.js","./signature":"../node_modules/ethereumjs-util/dist/signature.js","./bytes":"../node_modules/ethereumjs-util/dist/bytes.js","./object":"../node_modules/ethereumjs-util/dist/object.js"}],"../node_modules/ethereumjs-common/dist/chains/mainnet.json":[function(require,module,exports) {
 module.exports = {
     "name": "mainnet",
@@ -94416,7 +94445,7 @@ exports.chains = {
     kovan: require('./kovan.json'),
     goerli: require('./goerli.json'),
 };
-//# sourceMappingURL=index.js.map
+
 },{"./mainnet.json":"../node_modules/ethereumjs-common/dist/chains/mainnet.json","./ropsten.json":"../node_modules/ethereumjs-common/dist/chains/ropsten.json","./rinkeby.json":"../node_modules/ethereumjs-common/dist/chains/rinkeby.json","./kovan.json":"../node_modules/ethereumjs-common/dist/chains/kovan.json","./goerli.json":"../node_modules/ethereumjs-common/dist/chains/goerli.json"}],"../node_modules/ethereumjs-common/dist/hardforks/chainstart.json":[function(require,module,exports) {
 module.exports = {
     "name": "chainstart",
@@ -94946,7 +94975,7 @@ exports.hardforks = [
     ['istanbul', require('./istanbul.json')],
     ['muirGlacier', require('./muirGlacier.json')],
 ];
-//# sourceMappingURL=index.js.map
+
 },{"./chainstart.json":"../node_modules/ethereumjs-common/dist/hardforks/chainstart.json","./homestead.json":"../node_modules/ethereumjs-common/dist/hardforks/homestead.json","./dao.json":"../node_modules/ethereumjs-common/dist/hardforks/dao.json","./tangerineWhistle.json":"../node_modules/ethereumjs-common/dist/hardforks/tangerineWhistle.json","./spuriousDragon.json":"../node_modules/ethereumjs-common/dist/hardforks/spuriousDragon.json","./byzantium.json":"../node_modules/ethereumjs-common/dist/hardforks/byzantium.json","./constantinople.json":"../node_modules/ethereumjs-common/dist/hardforks/constantinople.json","./petersburg.json":"../node_modules/ethereumjs-common/dist/hardforks/petersburg.json","./istanbul.json":"../node_modules/ethereumjs-common/dist/hardforks/istanbul.json","./muirGlacier.json":"../node_modules/ethereumjs-common/dist/hardforks/muirGlacier.json"}],"../node_modules/ethereumjs-common/dist/index.js":[function(require,module,exports) {
 "use strict";
 var __assign = (this && this.__assign) || function () {
@@ -95353,7 +95382,7 @@ var Common = /** @class */ (function () {
     return Common;
 }());
 exports.default = Common;
-//# sourceMappingURL=index.js.map
+
 },{"./chains":"../node_modules/ethereumjs-common/dist/chains/index.js","./hardforks":"../node_modules/ethereumjs-common/dist/hardforks/index.js"}],"../node_modules/ethereumjs-tx/dist/transaction.js":[function(require,module,exports) {
 "use strict";
 var __assign = (this && this.__assign) || function () {
@@ -95698,7 +95727,7 @@ var Transaction = /** @class */ (function () {
     return Transaction;
 }());
 exports.default = Transaction;
-//# sourceMappingURL=transaction.js.map
+
 },{"ethereumjs-util":"../node_modules/ethereumjs-util/dist/index.js","ethereumjs-common":"../node_modules/ethereumjs-common/dist/index.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../node_modules/ethereumjs-tx/dist/fake.js":[function(require,module,exports) {
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -95769,7 +95798,7 @@ var FakeTransaction = /** @class */ (function (_super) {
     return FakeTransaction;
 }(transaction_1.default));
 exports.default = FakeTransaction;
-//# sourceMappingURL=fake.js.map
+
 },{"ethereumjs-util":"../node_modules/ethereumjs-util/dist/index.js","buffer":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js","./transaction":"../node_modules/ethereumjs-tx/dist/transaction.js"}],"../node_modules/ethereumjs-tx/dist/index.js":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -95777,7 +95806,7 @@ var transaction_1 = require("./transaction");
 exports.Transaction = transaction_1.default;
 var fake_1 = require("./fake");
 exports.FakeTransaction = fake_1.default;
-//# sourceMappingURL=index.js.map
+
 },{"./transaction":"../node_modules/ethereumjs-tx/dist/transaction.js","./fake":"../node_modules/ethereumjs-tx/dist/fake.js"}],"../node_modules/web3-eth-accounts/src/index.js":[function(require,module,exports) {
 var global = arguments[3];
 var Buffer = require("buffer").Buffer;
@@ -99085,722 +99114,7 @@ Web3.modules = {
 };
 core.addProviders(Web3);
 module.exports = Web3;
-},{"../package.json":"../node_modules/web3/package.json","web3-core":"../node_modules/web3-core/src/index.js","web3-eth":"../node_modules/web3-eth/src/index.js","web3-net":"../node_modules/web3-net/src/index.js","web3-eth-personal":"../node_modules/web3-eth-personal/src/index.js","web3-shh":"../node_modules/web3-shh/src/index.js","web3-bzz":"../node_modules/web3-bzz/src/index.js","web3-utils":"../node_modules/web3-utils/src/index.js"}],"abis/Hello.json":[function(require,module,exports) {
-module.exports = {
-  "contractName": "Hello",
-  "abi": [{
-    "constant": true,
-    "inputs": [],
-    "name": "greeting",
-    "outputs": [{
-      "internalType": "string",
-      "name": "",
-      "type": "string"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  }, {
-    "constant": true,
-    "inputs": [],
-    "name": "getGreeting",
-    "outputs": [{
-      "internalType": "string",
-      "name": "",
-      "type": "string"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  }, {
-    "constant": false,
-    "inputs": [{
-      "internalType": "string",
-      "name": "_greeting",
-      "type": "string"
-    }],
-    "name": "setGreeting",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  }],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"getGreeting\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"greeting\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_greeting\",\"type\":\"string\"}],\"name\":\"setGreeting\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/ANiJiT/Documents/truffle-hello/contracts/Hello.sol\":\"Hello\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/ANiJiT/Documents/truffle-hello/contracts/Hello.sol\":{\"keccak256\":\"0x30ebf3a1b0410cf2cdcafdb4319b29eecddc78045ce788db849c402d02dcbb96\",\"urls\":[\"bzz-raw://23e3d1b0ef7587fdff3ccc6154adf2bd7cf3b22878add91b2ff97b0998df243e\",\"dweb:/ipfs/Qmf7LYatc4a5k5tKggtpd8G4TRT221XDE9eryGtBt8z8D2\"]}},\"version\":1}",
-  "bytecode": "0x60806040526040518060800160405280604481526020016105346044913960009080519060200190610032929190610045565b5034801561003f57600080fd5b506100ea565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061008657805160ff19168380011785556100b4565b828001600101855582156100b4579182015b828111156100b3578251825591602001919060010190610098565b5b5090506100c191906100c5565b5090565b6100e791905b808211156100e35760008160009055506001016100cb565b5090565b90565b61043b806100f96000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c8063a413686214610046578063ef690cc014610101578063fe50cc7214610184575b600080fd5b6100ff6004803603602081101561005c57600080fd5b810190808035906020019064010000000081111561007957600080fd5b82018360208201111561008b57600080fd5b803590602001918460018302840111640100000000831117156100ad57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290505050610207565b005b610109610221565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561014957808201518184015260208101905061012e565b50505050905090810190601f1680156101765780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61018c6102bf565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101cc5780820151818401526020810190506101b1565b50505050905090810190601f1680156101f95780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b806000908051906020019061021d929190610361565b5050565b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102b75780601f1061028c576101008083540402835291602001916102b7565b820191906000526020600020905b81548152906001019060200180831161029a57829003601f168201915b505050505081565b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103575780601f1061032c57610100808354040283529160200191610357565b820191906000526020600020905b81548152906001019060200180831161033a57829003601f168201915b5050505050905090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106103a257805160ff19168380011785556103d0565b828001600101855582156103d0579182015b828111156103cf5782518255916020019190600101906103b4565b5b5090506103dd91906103e1565b5090565b61040391905b808211156103ff5760008160009055506001016103e7565b5090565b9056fea265627a7a723158209cc3fbb6675087772aa5d7247ab29e3bf2d4bbd29ba641dc0eab109f5146d11c64736f6c634300050c0032412073696d706c652048656c6c6f20576f726c64206469737472696275746564206170706c69636174696f6e207573696e6720526561637420616e642054727566666c65",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c8063a413686214610046578063ef690cc014610101578063fe50cc7214610184575b600080fd5b6100ff6004803603602081101561005c57600080fd5b810190808035906020019064010000000081111561007957600080fd5b82018360208201111561008b57600080fd5b803590602001918460018302840111640100000000831117156100ad57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290505050610207565b005b610109610221565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561014957808201518184015260208101905061012e565b50505050905090810190601f1680156101765780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61018c6102bf565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101cc5780820151818401526020810190506101b1565b50505050905090810190601f1680156101f95780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b806000908051906020019061021d929190610361565b5050565b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102b75780601f1061028c576101008083540402835291602001916102b7565b820191906000526020600020905b81548152906001019060200180831161029a57829003601f168201915b505050505081565b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103575780601f1061032c57610100808354040283529160200191610357565b820191906000526020600020905b81548152906001019060200180831161033a57829003601f168201915b5050505050905090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106103a257805160ff19168380011785556103d0565b828001600101855582156103d0579182015b828111156103cf5782518255916020019190600101906103b4565b5b5090506103dd91906103e1565b5090565b61040391905b808211156103ff5760008160009055506001016103e7565b5090565b9056fea265627a7a723158209cc3fbb6675087772aa5d7247ab29e3bf2d4bbd29ba641dc0eab109f5146d11c64736f6c634300050c0032",
-  "sourceMap": "36:308:0:-;;;58:95;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;36:308;8:9:-1;5:2;;;30:1;27;20:12;5:2;36:308:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
-  "deployedSourceMap": "36:308:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;36:308:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;254:87;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;254:87:0;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;254:87:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;254:87:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;254:87:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;254:87:0;;;;;;;;;;;;;;;:::i;:::-;;58:95;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;58:95:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;160:88;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;160:88:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;254:87;326:9;315:8;:20;;;;;;;;;;;;:::i;:::-;;254:87;:::o;58:95::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;160:88::-;205:13;234:8;227:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;160:88;:::o;36:308::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity >=0.4.21 <0.7.0;\r\n\r\ncontract Hello {\r\n\r\n  string public greeting = 'A simple Hello World distributed application using React and Truffle';\r\n\r\n  function getGreeting () public view returns (string memory) {\r\n    return greeting;\r\n  }\r\n\r\n  function setGreeting (string memory _greeting) public {\r\n    greeting = _greeting;\r\n  }\r\n}",
-  "sourcePath": "C:/Users/ANiJiT/Documents/truffle-hello/contracts/Hello.sol",
-  "ast": {
-    "absolutePath": "/C/Users/ANiJiT/Documents/truffle-hello/contracts/Hello.sol",
-    "exportedSymbols": {
-      "Hello": [23]
-    },
-    "id": 24,
-    "nodeType": "SourceUnit",
-    "nodes": [{
-      "id": 1,
-      "literals": ["solidity", ">=", "0.4", ".21", "<", "0.7", ".0"],
-      "nodeType": "PragmaDirective",
-      "src": "0:32:0"
-    }, {
-      "baseContracts": [],
-      "contractDependencies": [],
-      "contractKind": "contract",
-      "documentation": null,
-      "fullyImplemented": true,
-      "id": 23,
-      "linearizedBaseContracts": [23],
-      "name": "Hello",
-      "nodeType": "ContractDefinition",
-      "nodes": [{
-        "constant": false,
-        "id": 4,
-        "name": "greeting",
-        "nodeType": "VariableDeclaration",
-        "scope": 23,
-        "src": "58:95:0",
-        "stateVariable": true,
-        "storageLocation": "default",
-        "typeDescriptions": {
-          "typeIdentifier": "t_string_storage",
-          "typeString": "string"
-        },
-        "typeName": {
-          "id": 2,
-          "name": "string",
-          "nodeType": "ElementaryTypeName",
-          "src": "58:6:0",
-          "typeDescriptions": {
-            "typeIdentifier": "t_string_storage_ptr",
-            "typeString": "string"
-          }
-        },
-        "value": {
-          "argumentTypes": null,
-          "hexValue": "412073696d706c652048656c6c6f20576f726c64206469737472696275746564206170706c69636174696f6e207573696e6720526561637420616e642054727566666c65",
-          "id": 3,
-          "isConstant": false,
-          "isLValue": false,
-          "isPure": true,
-          "kind": "string",
-          "lValueRequested": false,
-          "nodeType": "Literal",
-          "src": "83:70:0",
-          "subdenomination": null,
-          "typeDescriptions": {
-            "typeIdentifier": "t_stringliteral_6cfa00075555d9a3fe0f45addbd11fb5d8d2e3fd765ddd734826967e62ea40d6",
-            "typeString": "literal_string \"A simple Hello World distributed application using React and Truffle\""
-          },
-          "value": "A simple Hello World distributed application using React and Truffle"
-        },
-        "visibility": "public"
-      }, {
-        "body": {
-          "id": 11,
-          "nodeType": "Block",
-          "src": "220:28:0",
-          "statements": [{
-            "expression": {
-              "argumentTypes": null,
-              "id": 9,
-              "name": "greeting",
-              "nodeType": "Identifier",
-              "overloadedDeclarations": [],
-              "referencedDeclaration": 4,
-              "src": "234:8:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage",
-                "typeString": "string storage ref"
-              }
-            },
-            "functionReturnParameters": 8,
-            "id": 10,
-            "nodeType": "Return",
-            "src": "227:15:0"
-          }]
-        },
-        "documentation": null,
-        "id": 12,
-        "implemented": true,
-        "kind": "function",
-        "modifiers": [],
-        "name": "getGreeting",
-        "nodeType": "FunctionDefinition",
-        "parameters": {
-          "id": 5,
-          "nodeType": "ParameterList",
-          "parameters": [],
-          "src": "181:2:0"
-        },
-        "returnParameters": {
-          "id": 8,
-          "nodeType": "ParameterList",
-          "parameters": [{
-            "constant": false,
-            "id": 7,
-            "name": "",
-            "nodeType": "VariableDeclaration",
-            "scope": 12,
-            "src": "205:13:0",
-            "stateVariable": false,
-            "storageLocation": "memory",
-            "typeDescriptions": {
-              "typeIdentifier": "t_string_memory_ptr",
-              "typeString": "string"
-            },
-            "typeName": {
-              "id": 6,
-              "name": "string",
-              "nodeType": "ElementaryTypeName",
-              "src": "205:6:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage_ptr",
-                "typeString": "string"
-              }
-            },
-            "value": null,
-            "visibility": "internal"
-          }],
-          "src": "204:15:0"
-        },
-        "scope": 23,
-        "src": "160:88:0",
-        "stateMutability": "view",
-        "superFunction": null,
-        "visibility": "public"
-      }, {
-        "body": {
-          "id": 21,
-          "nodeType": "Block",
-          "src": "308:33:0",
-          "statements": [{
-            "expression": {
-              "argumentTypes": null,
-              "id": 19,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": false,
-              "lValueRequested": false,
-              "leftHandSide": {
-                "argumentTypes": null,
-                "id": 17,
-                "name": "greeting",
-                "nodeType": "Identifier",
-                "overloadedDeclarations": [],
-                "referencedDeclaration": 4,
-                "src": "315:8:0",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_string_storage",
-                  "typeString": "string storage ref"
-                }
-              },
-              "nodeType": "Assignment",
-              "operator": "=",
-              "rightHandSide": {
-                "argumentTypes": null,
-                "id": 18,
-                "name": "_greeting",
-                "nodeType": "Identifier",
-                "overloadedDeclarations": [],
-                "referencedDeclaration": 14,
-                "src": "326:9:0",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_string_memory_ptr",
-                  "typeString": "string memory"
-                }
-              },
-              "src": "315:20:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage",
-                "typeString": "string storage ref"
-              }
-            },
-            "id": 20,
-            "nodeType": "ExpressionStatement",
-            "src": "315:20:0"
-          }]
-        },
-        "documentation": null,
-        "id": 22,
-        "implemented": true,
-        "kind": "function",
-        "modifiers": [],
-        "name": "setGreeting",
-        "nodeType": "FunctionDefinition",
-        "parameters": {
-          "id": 15,
-          "nodeType": "ParameterList",
-          "parameters": [{
-            "constant": false,
-            "id": 14,
-            "name": "_greeting",
-            "nodeType": "VariableDeclaration",
-            "scope": 22,
-            "src": "276:23:0",
-            "stateVariable": false,
-            "storageLocation": "memory",
-            "typeDescriptions": {
-              "typeIdentifier": "t_string_memory_ptr",
-              "typeString": "string"
-            },
-            "typeName": {
-              "id": 13,
-              "name": "string",
-              "nodeType": "ElementaryTypeName",
-              "src": "276:6:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage_ptr",
-                "typeString": "string"
-              }
-            },
-            "value": null,
-            "visibility": "internal"
-          }],
-          "src": "275:25:0"
-        },
-        "returnParameters": {
-          "id": 16,
-          "nodeType": "ParameterList",
-          "parameters": [],
-          "src": "308:0:0"
-        },
-        "scope": 23,
-        "src": "254:87:0",
-        "stateMutability": "nonpayable",
-        "superFunction": null,
-        "visibility": "public"
-      }],
-      "scope": 24,
-      "src": "36:308:0"
-    }],
-    "src": "0:344:0"
-  },
-  "legacyAST": {
-    "absolutePath": "/C/Users/ANiJiT/Documents/truffle-hello/contracts/Hello.sol",
-    "exportedSymbols": {
-      "Hello": [23]
-    },
-    "id": 24,
-    "nodeType": "SourceUnit",
-    "nodes": [{
-      "id": 1,
-      "literals": ["solidity", ">=", "0.4", ".21", "<", "0.7", ".0"],
-      "nodeType": "PragmaDirective",
-      "src": "0:32:0"
-    }, {
-      "baseContracts": [],
-      "contractDependencies": [],
-      "contractKind": "contract",
-      "documentation": null,
-      "fullyImplemented": true,
-      "id": 23,
-      "linearizedBaseContracts": [23],
-      "name": "Hello",
-      "nodeType": "ContractDefinition",
-      "nodes": [{
-        "constant": false,
-        "id": 4,
-        "name": "greeting",
-        "nodeType": "VariableDeclaration",
-        "scope": 23,
-        "src": "58:95:0",
-        "stateVariable": true,
-        "storageLocation": "default",
-        "typeDescriptions": {
-          "typeIdentifier": "t_string_storage",
-          "typeString": "string"
-        },
-        "typeName": {
-          "id": 2,
-          "name": "string",
-          "nodeType": "ElementaryTypeName",
-          "src": "58:6:0",
-          "typeDescriptions": {
-            "typeIdentifier": "t_string_storage_ptr",
-            "typeString": "string"
-          }
-        },
-        "value": {
-          "argumentTypes": null,
-          "hexValue": "412073696d706c652048656c6c6f20576f726c64206469737472696275746564206170706c69636174696f6e207573696e6720526561637420616e642054727566666c65",
-          "id": 3,
-          "isConstant": false,
-          "isLValue": false,
-          "isPure": true,
-          "kind": "string",
-          "lValueRequested": false,
-          "nodeType": "Literal",
-          "src": "83:70:0",
-          "subdenomination": null,
-          "typeDescriptions": {
-            "typeIdentifier": "t_stringliteral_6cfa00075555d9a3fe0f45addbd11fb5d8d2e3fd765ddd734826967e62ea40d6",
-            "typeString": "literal_string \"A simple Hello World distributed application using React and Truffle\""
-          },
-          "value": "A simple Hello World distributed application using React and Truffle"
-        },
-        "visibility": "public"
-      }, {
-        "body": {
-          "id": 11,
-          "nodeType": "Block",
-          "src": "220:28:0",
-          "statements": [{
-            "expression": {
-              "argumentTypes": null,
-              "id": 9,
-              "name": "greeting",
-              "nodeType": "Identifier",
-              "overloadedDeclarations": [],
-              "referencedDeclaration": 4,
-              "src": "234:8:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage",
-                "typeString": "string storage ref"
-              }
-            },
-            "functionReturnParameters": 8,
-            "id": 10,
-            "nodeType": "Return",
-            "src": "227:15:0"
-          }]
-        },
-        "documentation": null,
-        "id": 12,
-        "implemented": true,
-        "kind": "function",
-        "modifiers": [],
-        "name": "getGreeting",
-        "nodeType": "FunctionDefinition",
-        "parameters": {
-          "id": 5,
-          "nodeType": "ParameterList",
-          "parameters": [],
-          "src": "181:2:0"
-        },
-        "returnParameters": {
-          "id": 8,
-          "nodeType": "ParameterList",
-          "parameters": [{
-            "constant": false,
-            "id": 7,
-            "name": "",
-            "nodeType": "VariableDeclaration",
-            "scope": 12,
-            "src": "205:13:0",
-            "stateVariable": false,
-            "storageLocation": "memory",
-            "typeDescriptions": {
-              "typeIdentifier": "t_string_memory_ptr",
-              "typeString": "string"
-            },
-            "typeName": {
-              "id": 6,
-              "name": "string",
-              "nodeType": "ElementaryTypeName",
-              "src": "205:6:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage_ptr",
-                "typeString": "string"
-              }
-            },
-            "value": null,
-            "visibility": "internal"
-          }],
-          "src": "204:15:0"
-        },
-        "scope": 23,
-        "src": "160:88:0",
-        "stateMutability": "view",
-        "superFunction": null,
-        "visibility": "public"
-      }, {
-        "body": {
-          "id": 21,
-          "nodeType": "Block",
-          "src": "308:33:0",
-          "statements": [{
-            "expression": {
-              "argumentTypes": null,
-              "id": 19,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": false,
-              "lValueRequested": false,
-              "leftHandSide": {
-                "argumentTypes": null,
-                "id": 17,
-                "name": "greeting",
-                "nodeType": "Identifier",
-                "overloadedDeclarations": [],
-                "referencedDeclaration": 4,
-                "src": "315:8:0",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_string_storage",
-                  "typeString": "string storage ref"
-                }
-              },
-              "nodeType": "Assignment",
-              "operator": "=",
-              "rightHandSide": {
-                "argumentTypes": null,
-                "id": 18,
-                "name": "_greeting",
-                "nodeType": "Identifier",
-                "overloadedDeclarations": [],
-                "referencedDeclaration": 14,
-                "src": "326:9:0",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_string_memory_ptr",
-                  "typeString": "string memory"
-                }
-              },
-              "src": "315:20:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage",
-                "typeString": "string storage ref"
-              }
-            },
-            "id": 20,
-            "nodeType": "ExpressionStatement",
-            "src": "315:20:0"
-          }]
-        },
-        "documentation": null,
-        "id": 22,
-        "implemented": true,
-        "kind": "function",
-        "modifiers": [],
-        "name": "setGreeting",
-        "nodeType": "FunctionDefinition",
-        "parameters": {
-          "id": 15,
-          "nodeType": "ParameterList",
-          "parameters": [{
-            "constant": false,
-            "id": 14,
-            "name": "_greeting",
-            "nodeType": "VariableDeclaration",
-            "scope": 22,
-            "src": "276:23:0",
-            "stateVariable": false,
-            "storageLocation": "memory",
-            "typeDescriptions": {
-              "typeIdentifier": "t_string_memory_ptr",
-              "typeString": "string"
-            },
-            "typeName": {
-              "id": 13,
-              "name": "string",
-              "nodeType": "ElementaryTypeName",
-              "src": "276:6:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage_ptr",
-                "typeString": "string"
-              }
-            },
-            "value": null,
-            "visibility": "internal"
-          }],
-          "src": "275:25:0"
-        },
-        "returnParameters": {
-          "id": 16,
-          "nodeType": "ParameterList",
-          "parameters": [],
-          "src": "308:0:0"
-        },
-        "scope": 23,
-        "src": "254:87:0",
-        "stateMutability": "nonpayable",
-        "superFunction": null,
-        "visibility": "public"
-      }],
-      "scope": 24,
-      "src": "36:308:0"
-    }],
-    "src": "0:344:0"
-  },
-  "compiler": {
-    "name": "solc",
-    "version": "0.5.12+commit.7709ece9.Emscripten.clang"
-  },
-  "networks": {
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0x9A1427162e8b6b87392489718da2622e3f3EA865",
-      "transactionHash": "0x34281a3b9ded73b4b7ba37860449306225dd7896e1f51fc5ded927513c3598ec"
-    }
-  },
-  "schemaVersion": "3.0.19",
-  "updatedAt": "2020-01-02T16:37:04.749Z",
-  "networkType": "ethereum",
-  "devdoc": {
-    "methods": {}
-  },
-  "userdoc": {
-    "methods": {}
-  }
-};
-},{}],"../node_modules/@babel/runtime/helpers/classCallCheck.js":[function(require,module,exports) {
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-},{}],"src/Constants.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// holds the definition of all the constants
-var Constants = function Constants() {
-  (0, _classCallCheck2.default)(this, Constants);
-  this.BASE_URL = "http://localhost";
-  this.BASE_PORT = 9545;
-  this.ETH_URL = "".concat(this.BASE_URL, ":").concat(this.BASE_PORT);
-  this.USER_MOVE = 1;
-  this.COMPUTER_MOVE = 2;
-  this.EMPTY_CELL = 0;
-  this.GRID_LENGTH = 3;
-};
-
-exports.default = Constants;
-},{"@babel/runtime/helpers/classCallCheck":"../node_modules/@babel/runtime/helpers/classCallCheck.js"}],"src/components/EthGreeting.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _web = _interopRequireDefault(require("web3"));
-
-var _Hello = _interopRequireDefault(require("../../abis/Hello.json"));
-
-var _Constants = _interopRequireDefault(require("../Constants"));
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// dependencies
-// JSON interfaces of Solidity contracts
-// Constants
-var EthGreeting = function EthGreeting() {
-  var _useState = (0, _react.useState)('loading contents from contract...'),
-      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-      greeting = _useState2[0],
-      setGreeting = _useState2[1];
-
-  (0, _react.useEffect)(function () {
-    // call the ethereum when component is mounted
-    connectEth();
-  }, []); // initialize the Constants
-
-  var allConstants = new _Constants.default(); // call to the ethereum back end
-
-  var connectEth =
-  /*#__PURE__*/
-  function () {
-    var _ref = (0, _asyncToGenerator2.default)(
-    /*#__PURE__*/
-    _regenerator.default.mark(function _callee() {
-      var web3, abi, networks, networkIds, address, contract, res;
-      return _regenerator.default.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              // initialize web3
-              web3 = new _web.default(new _web.default.providers.HttpProvider(allConstants.ETH_URL));
-              console.log('Web3 as connected', web3); // abi and contract address from the JSON interface of the contract
-
-              abi = _Hello.default.abi, networks = _Hello.default.networks;
-              networkIds = Object.keys(networks);
-              address = networks[networkIds[0]].address;
-              console.log("contract address", address, " and abi\n", abi); // initialize the contract 
-
-              contract = new web3.eth.Contract(abi, address); // call the methods of the contract 
-
-              _context.next = 9;
-              return contract.methods.getGreeting().call();
-
-            case 9:
-              res = _context.sent;
-              // set the state with the value
-              setGreeting(res);
-
-            case 11:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function connectEth() {
-      return _ref.apply(this, arguments);
-    };
-  }();
-
-  return _react.default.createElement("div", {
-    className: "contents"
-  }, greeting);
-};
-
-var _default = EthGreeting;
-exports.default = _default;
-},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","web3":"../node_modules/web3/src/index.js","../../abis/Hello.json":"abis/Hello.json","../Constants":"src/Constants.js"}],"src/components/Box.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Box = function Box(props) {
-  // extracting necessary fields from the props
-  var value = props.value,
-      rowIndex = props.rowIndex,
-      colIndex = props.colIndex,
-      handleOnClick = props.handleOnClick;
-  var boxIndex = rowIndex + colIndex + 1;
-  var boxStyle = boxIndex % 2 === 0 ? 'even-box box' : 'odd-box box';
-  return _react.default.createElement("div", {
-    id: "".concat(rowIndex, "-").concat(colIndex),
-    className: boxStyle,
-    onClick: handleOnClick
-  }, value == 1 ? 'X' : value == 2 ? 'O' : '');
-};
-
-var _default = Box;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"abis/TicTacToe.json":[function(require,module,exports) {
+},{"../package.json":"../node_modules/web3/package.json","web3-core":"../node_modules/web3-core/src/index.js","web3-eth":"../node_modules/web3-eth/src/index.js","web3-net":"../node_modules/web3-net/src/index.js","web3-eth-personal":"../node_modules/web3-eth-personal/src/index.js","web3-shh":"../node_modules/web3-shh/src/index.js","web3-bzz":"../node_modules/web3-bzz/src/index.js","web3-utils":"../node_modules/web3-utils/src/index.js"}],"abis/TicTacToe.json":[function(require,module,exports) {
 module.exports = {
   "contractName": "TicTacToe",
   "abi": [{
@@ -101320,12 +100634,12 @@ module.exports = {
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x0047f8bBC2e15102bDb8D4d77b4E7d5D2980f262",
-      "transactionHash": "0x0deb42c4bc220b04d09a7b0b4f08686578cd4aa83b047e0ee77e60a1a11a60d8"
+      "address": "0x51e732B039088bA3c58a5ADb1FA302f952315C75",
+      "transactionHash": "0x11c5afc544f1e97802fde0a8fb5d8c47f071c77ce6c78795bf7ddd6f29cdafae"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2020-02-02T17:08:04.543Z",
+  "updatedAt": "2020-02-02T18:24:55.346Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
@@ -101334,7 +100648,40 @@ module.exports = {
     "methods": {}
   }
 };
-},{}],"src/components/EthConnector.js":[function(require,module,exports) {
+},{}],"../node_modules/@babel/runtime/helpers/classCallCheck.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+},{}],"src/Constants.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// holds the definition of all the constants
+var Constants = function Constants() {
+  (0, _classCallCheck2.default)(this, Constants);
+  this.BASE_URL = "http://localhost";
+  this.BASE_PORT = 9545;
+  this.ETH_URL = "".concat(this.BASE_URL, ":").concat(this.BASE_PORT);
+  this.USER_MOVE = 1;
+  this.COMPUTER_MOVE = 2;
+  this.EMPTY_CELL = 0;
+  this.GRID_LENGTH = 3;
+};
+
+exports.default = Constants;
+},{"@babel/runtime/helpers/classCallCheck":"../node_modules/@babel/runtime/helpers/classCallCheck.js"}],"src/components/EthConnector.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -101450,8 +100797,9 @@ var useEthConnector = function useEthConnector(props) {
 
             case 5:
               result = _context2.sent;
+              console.log('result as received', result);
 
-            case 6:
+            case 7:
             case "end":
               return _context2.stop();
           }
@@ -101494,37 +100842,46 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var TicTacToe = function TicTacToe(props) {
-  // const [box, setBox] = useState([])
+  var _useState = (0, _react.useState)(),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      box = _useState2[0],
+      setBox = _useState2[1];
+
   var _useEthConnector = (0, _EthConnector.default)(),
       _useEthConnector2 = (0, _slicedToArray2.default)(_useEthConnector, 3),
-      box = _useEthConnector2[0],
+      boxEth = _useEthConnector2[0],
       getBox = _useEthConnector2[1],
       saveBox = _useEthConnector2[2];
 
-  var _useState = (0, _react.useState)(true),
-      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-      userTurn = _useState2[0],
-      setUserTurn = _useState2[1];
-
-  var _useState3 = (0, _react.useState)(false),
+  var _useState3 = (0, _react.useState)(true),
       _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-      isBoxFilled = _useState4[0],
-      setIsBoxFilled = _useState4[1];
+      userTurn = _useState4[0],
+      setUserTurn = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(''),
+  var _useState5 = (0, _react.useState)(false),
       _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
-      result = _useState6[0],
-      setResult = _useState6[1];
+      isBoxFilled = _useState6[0],
+      setIsBoxFilled = _useState6[1];
 
-  var _useState7 = (0, _react.useState)(false),
+  var _useState7 = (0, _react.useState)(''),
       _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
-      isBoxLoaded = _useState8[0],
-      setBoxLoaded = _useState8[1];
+      result = _useState8[0],
+      setResult = _useState8[1];
+
+  var _useState9 = (0, _react.useState)(false),
+      _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
+      isBoxLoaded = _useState10[0],
+      setBoxLoaded = _useState10[1];
 
   (0, _react.useEffect)(function () {
     if (!isBoxLoaded) {
       getBox();
       setBoxLoaded(true);
+    } // copy the Ethereum box into our box variable
+
+
+    if (boxEth && !box) {
+      setBox(boxEth);
     }
 
     if (Array.isArray(box) && !userTurn) {
@@ -101538,7 +100895,7 @@ var TicTacToe = function TicTacToe(props) {
 
   var handleOnClick = function handleOnClick(event) {
     var id = event.target.id;
-    console.log('code comes here');
+    console.log('code comes here', id);
 
     if (!isBoxFilled) {
       var _generateIndices = generateIndices(id),
@@ -101570,7 +100927,7 @@ var TicTacToe = function TicTacToe(props) {
 
 
   var checkIfEmptyCell = function checkIfEmptyCell(rowIndex, colIndex) {
-    if (box[rowIndex][colIndex] === 0) {
+    if (box[rowIndex][colIndex] == 0) {
       return true;
     }
 
@@ -101582,6 +100939,7 @@ var TicTacToe = function TicTacToe(props) {
     console.log('Code for user move');
     var boxNew = JSON.parse(JSON.stringify(box));
     boxNew[rowIndex][colIndex] = allConstants.USER_MOVE;
+    console.log('setBox', setBox);
     setBox(boxNew);
     setUserTurn(false);
   }; // check all the cells are filled or not
@@ -101660,12 +101018,14 @@ var TicTacToe = function TicTacToe(props) {
       var randomCol = Math.floor(Math.random() * GRID_LENGTH) + 0;
       var randomRow = Math.floor(Math.random() * GRID_LENGTH) + 0;
       console.log("random cell generated", randomCol, " ", randomRow);
+      console.log("box generated", box);
 
       if (checkIfEmptyCell(randomRow, randomCol)) {
         var boxNew = JSON.parse(JSON.stringify(box));
         boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE;
         setBox(boxNew);
         setUserTurn(true);
+        saveBox(boxNew);
         return;
       }
     }
@@ -101675,7 +101035,8 @@ var TicTacToe = function TicTacToe(props) {
   var showResult = function showResult(winner) {
     var content = !winner ? "GAME TIED" : winner == allConstants.USER_MOVE ? "You won" : "Computer won";
     console.log('RESULT of the game is', result);
-    setIsBoxFilled(true); // if result not defined set it 
+    setIsBoxFilled(true);
+    saveBox(box); // if result not defined set it 
 
     !result ? setResult(content) : result;
   }; // render the box contents
@@ -101715,8 +101076,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _Title = _interopRequireDefault(require("./components/Title"));
 
-var _EthGreeting = _interopRequireDefault(require("./components/EthGreeting"));
-
 var _TicTacToe = _interopRequireDefault(require("./components/TicTacToe"));
 
 require("./styles.css");
@@ -101744,7 +101103,7 @@ var App = function App(props) {
 
 var _default = App;
 exports.default = _default;
-},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./components/Title":"src/components/Title.js","./components/EthGreeting":"src/components/EthGreeting.js","./components/TicTacToe":"src/components/TicTacToe.js","./styles.css":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js"}],"index.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","./components/Title":"src/components/Title.js","./components/TicTacToe":"src/components/TicTacToe.js","./styles.css":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -101757,3 +101116,4 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById('root'));
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./src/App":"src/App.js"}]},{},["index.js"], null)
+//# sourceMappingURL=/public.e31bb0bc.js.map

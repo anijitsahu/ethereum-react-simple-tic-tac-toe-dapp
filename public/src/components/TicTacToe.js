@@ -5,8 +5,8 @@ import useEthConnector from './EthConnector'
 import Constants from '../Constants'
 
 const TicTacToe = (props) => {
-    // const [box, setBox] = useState([])
-    const [box, getBox, saveBox] = useEthConnector()
+    const [box, setBox] = useState()
+    const [boxEth, getBox, saveBox] = useEthConnector()
     const [userTurn, setUserTurn] = useState(true)
     const [isBoxFilled, setIsBoxFilled] = useState(false)
     const [result, setResult] = useState('')
@@ -16,6 +16,10 @@ const TicTacToe = (props) => {
         if (!isBoxLoaded) {
             getBox()
             setBoxLoaded(true)
+        }
+        // copy the Ethereum box into our box variable
+        if (boxEth && !box) {
+            setBox(boxEth)
         }
         if (Array.isArray(box) && !userTurn) {
             checkForMatch()
@@ -30,7 +34,7 @@ const TicTacToe = (props) => {
     // handle the onClick event
     const handleOnClick = (event) => {
         const { id } = event.target
-        console.log('code comes here')
+        console.log('code comes here', id)
         if (!isBoxFilled) {
             const [rowIndex, colIndex] = generateIndices(id)
             let isEmpty = checkIfEmptyCell(rowIndex, colIndex)
@@ -52,7 +56,7 @@ const TicTacToe = (props) => {
 
     // check if it is an empty slot
     const checkIfEmptyCell = (rowIndex, colIndex) => {
-        if (box[rowIndex][colIndex] === 0) {
+        if (box[rowIndex][colIndex] == 0) {
             return true
         }
         return false
@@ -60,9 +64,10 @@ const TicTacToe = (props) => {
 
     // capture user's move by set it to 1 
     const captureUserMove = (rowIndex, colIndex) => {
-    	console.log('Code for user move')
+        console.log('Code for user move')
         const boxNew = JSON.parse(JSON.stringify(box))
         boxNew[rowIndex][colIndex] = allConstants.USER_MOVE
+        console.log('setBox', setBox)
         setBox(boxNew)
         setUserTurn(false)
     }
@@ -132,12 +137,14 @@ const TicTacToe = (props) => {
             let randomCol = Math.floor(Math.random() * GRID_LENGTH) + 0
             let randomRow = Math.floor(Math.random() * GRID_LENGTH) + 0
             console.log("random cell generated", randomCol, " ", randomRow)
+            console.log("box generated", box)
 
             if (checkIfEmptyCell(randomRow, randomCol)) {
                 const boxNew = JSON.parse(JSON.stringify(box))
                 boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE
                 setBox(boxNew)
                 setUserTurn(true)
+                saveBox(boxNew)
                 return;
             }
         }
@@ -148,6 +155,7 @@ const TicTacToe = (props) => {
         let content = !winner ? "GAME TIED" : (winner == allConstants.USER_MOVE) ? "You won" : "Computer won"
         console.log('RESULT of the game is', result)
         setIsBoxFilled(true);
+        saveBox(box);
 
         // if result not defined set it 
         !result ? setResult(content) : result
@@ -157,24 +165,24 @@ const TicTacToe = (props) => {
     return (
         <div className="box-container">
         {
-        	result ? result
-        	:
-        	Array.isArray(box) ? 
-        	box.map((row, rowIndex)=> {
-        		return (
-        			<div className="row-container" key={rowIndex}>
-        			{
-        				row.map((box, colIndex)=> {
-        					return (
-        						<Box value={box} rowIndex={rowIndex} colIndex={colIndex} handleOnClick={handleOnClick} key={colIndex} />)
-        				})
-        			}
-        			</div>
-        		)
-        	})
-        	: 'box is loading...'
+            result ? result
+            :
+            Array.isArray(box) ? 
+            box.map((row, rowIndex)=> {
+                return (
+                    <div className="row-container" key={rowIndex}>
+                    {
+                        row.map((box, colIndex)=> {
+                            return (
+                                <Box value={box} rowIndex={rowIndex} colIndex={colIndex} handleOnClick={handleOnClick} key={colIndex} />)
+                        })
+                    }
+                    </div>
+                )
+            })
+            : 'box is loading...'
         }
-    	</div>
+        </div>
     )
 }
 

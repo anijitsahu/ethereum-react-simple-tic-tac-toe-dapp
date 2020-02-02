@@ -42,7 +42,7 @@ const useEthConnector = (props) => {
         // use the address of the first account in the block chain
         const accountsReceived = await eth.getAccounts()
         const result = await contract.methods.saveCurrentMove(boxReceived).send({ from: accountsReceived[0] })
-        // console.log('result as received', result)
+        console.log('result as received', result)
     }
 
     return ([box, getBox, saveBox]);
