@@ -32,20 +32,41 @@ const { eth, contract } = initializeAll()
 
 const useEthConnector = (props) => {
     const [box, setBox] = useState(props)
+    const [gameResult, setResult] = useState('')
 
     const getBox = async () => {
         const boxReceived = await contract.methods.getCurrentBox().call()
         setBox(boxReceived)
     }
 
-    const saveBox = async (boxReceived) => {
-        // use the address of the first account in the block chain
-        const accountsReceived = await eth.getAccounts()
-        const result = await contract.methods.saveCurrentMove(boxReceived).send({ from: accountsReceived[0] })
-        console.log('result as received', result)
+    const saveBox = async (rowVal, colVal, move) => {
+        try {
+            // use the address of the first account in the block chain
+            const accountsReceived = await eth.getAccounts()
+            const result = await contract.methods.saveCurrentMove(rowVal, colVal, move).send({ from: accountsReceived[0] })
+            console.log('Move is captured successfully')
+        } catch (err) {
+            console.log('unable to save the move', err)
+        }
     }
 
-    return ([box, getBox, saveBox]);
+    const getResult = async () => {
+        const gameResultReceived = await contract.methods.getGameResult().call()
+        setResult(gameResultReceived)
+    }
+
+    const saveResult = async (gameResult) => {
+        try {
+            // use the address of the first account in the block chain
+            const accountsReceived = await eth.getAccounts()
+            const result = await contract.methods.saveResult(gameResult).send({ from: accountsReceived[0] })
+            console.log('Result is captured successfully')
+        } catch (err) {
+            console.log('unable to save the Result', err)
+        }
+    }
+
+    return ([box, getBox, saveBox, gameResult, getResult, saveResult]);
 }
 
 export default useEthConnector;

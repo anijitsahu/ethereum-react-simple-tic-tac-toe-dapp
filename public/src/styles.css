@@ -33,7 +33,7 @@ body {
 .container {
     display: grid;
     grid-template-rows: 1fr 2fr;
-    background-image: linear-gradient(95deg, #819bff, #9eeaea, #8ee676);
+    background-image: linear-gradient(95deg, #819bff, #3e9d9d, #8ee676);
     background-repeat: no-repeat;
 
     margin: 0 auto;
@@ -84,6 +84,7 @@ body {
     padding: 1.17em;
     font-weight: 700;
     font-size: 1.5rem;
+    height: 6rem;
 }
 
 .box:hover {
@@ -100,10 +101,19 @@ body {
     background-color: var(--green);
 }
 
+.result--div {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+
 /* media queries to make it responsive */
 @media only screen and (max-width: 600px) {
     html {
         font-size: var(--font-size-small);
+    }
+
+    .container {
+        width: 90vw;
     }
 
     .row-container {
@@ -112,5 +122,12 @@ body {
 
     .box {
         padding: 2.1em;
+        width: 3rem;
     }
+
+    .box-container {
+        padding-left: 0;
+        padding-right: 5rem;
+    }
+
 }

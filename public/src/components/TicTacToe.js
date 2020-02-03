@@ -6,7 +6,7 @@ import Constants from '../Constants'
 
 const TicTacToe = (props) => {
     const [box, setBox] = useState()
-    const [boxEth, getBox, saveBox] = useEthConnector()
+    const [boxEth, getBox, saveBox, resultEth, getResult, saveResult] = useEthConnector()
     const [userTurn, setUserTurn] = useState(true)
     const [isBoxFilled, setIsBoxFilled] = useState(false)
     const [result, setResult] = useState('')
@@ -15,12 +15,20 @@ const TicTacToe = (props) => {
     useEffect(() => {
         if (!isBoxLoaded) {
             getBox()
+            getResult()
             setBoxLoaded(true)
         }
         // copy the Ethereum box into our box variable
         if (boxEth && !box) {
             setBox(boxEth)
         }
+
+        // copy the Game result to result variable
+        if (resultEth && !result) {
+            console.log('Game result as received', resultEth)
+            setResult(resultEth)
+        }
+
         if (Array.isArray(box) && !userTurn) {
             checkForMatch()
             computerPlays()
@@ -67,7 +75,7 @@ const TicTacToe = (props) => {
         console.log('Code for user move')
         const boxNew = JSON.parse(JSON.stringify(box))
         boxNew[rowIndex][colIndex] = allConstants.USER_MOVE
-        console.log('setBox', setBox)
+        saveBox(rowIndex, colIndex, allConstants.USER_MOVE)
         setBox(boxNew)
         setUserTurn(false)
     }
@@ -137,14 +145,13 @@ const TicTacToe = (props) => {
             let randomCol = Math.floor(Math.random() * GRID_LENGTH) + 0
             let randomRow = Math.floor(Math.random() * GRID_LENGTH) + 0
             console.log("random cell generated", randomCol, " ", randomRow)
-            console.log("box generated", box)
 
             if (checkIfEmptyCell(randomRow, randomCol)) {
                 const boxNew = JSON.parse(JSON.stringify(box))
                 boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE
+                saveBox(randomRow, randomCol, allConstants.COMPUTER_MOVE)
                 setBox(boxNew)
                 setUserTurn(true)
-                saveBox(boxNew)
                 return;
             }
         }
@@ -155,17 +162,17 @@ const TicTacToe = (props) => {
         let content = !winner ? "GAME TIED" : (winner == allConstants.USER_MOVE) ? "You won" : "Computer won"
         console.log('RESULT of the game is', result)
         setIsBoxFilled(true);
-        saveBox(box);
 
         // if result not defined set it 
-        !result ? setResult(content) : result
+        result == 'TBD' ? setResult(content) : result
+        saveResult(content);
     }
 
     // render the box contents
     return (
         <div className="box-container">
         {
-            result ? result
+            (result && result != 'TBD')  ? <div className="result--div">{`${result}!!!`}</div>
             :
             Array.isArray(box) ? 
             box.map((row, rowIndex)=> {
