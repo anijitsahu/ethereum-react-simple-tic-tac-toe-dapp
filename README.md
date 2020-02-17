@@ -39,7 +39,7 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 3. Install all the necessary dependecies by using `npm install` 
 4. Generate the build by `npm run dev` 
 5. Open another `Command Prompt` and Run it as Administrator (in Windows)  and navigate to the same directory `ethereum-react-simple-tic-tac-toe-dapp`
-6. In the second Command prompt, run the *Truffle Development network* by `truffle develop`
+6. In the second Command prompt, run the *Truffle Development network* by `truffle develop`. Make sure you have installed <a href="https://www.trufflesuite.com/">Ethereum Truffle</a> in your macheine 
 7. In the second Command prompt, deploy the blockchain by `truffle migrate`
 8. Now in a Web browser navigate to `http://localhost:8081` and enjoy the TicTacToe game
 9. In the browser you have to <b>add</b> the <a href="https://metamask.io/">Metamask Addon</a> to talk with the Blockchain
