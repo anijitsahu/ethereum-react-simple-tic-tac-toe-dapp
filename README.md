@@ -36,12 +36,15 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 1. Clone the repository using `git clone https://github.com/anijitsahu/truffle-react-simple-tic-tac-toe-dapp.git` from `Git Bash / Command Prompt`
 2. Navigate inside the directory by `cd truffle-react-simple-tic-tac-toe-dapp`
 3. Install all the necessary dependecies by using `npm install` 
-4. Generate the build by `npm run dev` <br/>
+4. Generate the build by `npm run dev` 
+<p>
 5. Open another `Command Prompt` and Run it as Administrator (in Windows)  and navigate to the same directory `truffle-react-simple-tic-tac-toe-dapp`
 6. In the second Command prompt, run the *Truffle Development network* by `truffle develop`
 7. In the second Command prompt, deploy the blockchain by `truffle migrate`
 8. Now in a Web browser navigate to `http://localhost:8081` and enjoy the TicTacToe game
-9. If the game ended and you want to play it again, in the second command prompt hit `Ctrl + C` and then run `truffle migrate --reset`
+</p>
+9. In the browser you have to <b>add</b> the <a href="https://metamask.io/">Metamask Addon</a> to talk with the Blockchain
+10. If the game ended and you want to play it again, in the second command prompt hit `Ctrl + C` and then run `truffle migrate --reset`
 
  
 *tested with <img src="screenshots/chrome.png" width="20px" title="Google Chrome">Google Chrome v70 and <img src="screenshots/firefox.png" width="25px" title="Firefox Developer edition">Mozilla Firefox Developer Editon*  
