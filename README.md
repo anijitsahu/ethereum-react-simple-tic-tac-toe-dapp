@@ -51,32 +51,14 @@ Some screens of the application is given below for better understanding.
 
 Desktop as well as Mobile version of the screenshots are given side by side.
 
-<p> Login Screen <br/> 
- <img src="screenshots/desktop 1.png" width="590px" title="Login screen"/>
- <img src="screenshots/mobile 1.png" width="190px" title="Login screen"/> 
+<p> Game Screen <br/> 
+ <img src="screenshots/desktop(1).png" width="590px" title="Game screen"/>
+ <img src="screenshots/mobile(1).png" width="190px" title="Game screen"/> 
 </p>
  
- <p> Entering credentials <br/> 
- <img src="screenshots/desktop 2.png" width="590px" title="Entering credentials screen"/>
- <img src="screenshots/mobile 2.png" width="190px" title="Entering credentials screen"/> 
+ <p> Game Result Screen <br/> 
+ <img src="screenshots/desktop(2).png" width="590px" title="Game Result Screen screen"/>
+ <img src="screenshots/mobile(2).png" width="190px" title="Game Result Screen screen"/> 
 </p>
 
-<p> After submitting credentials <br/> 
- <img src="screenshots/desktop 3.png" width="590px" title="After submitting credentials screen"/>
- <img src="screenshots/mobile 3.png" width="190px" title="After submitting credentials screen"/> 
-</p>
 
-<p> If credentials are not correct <br/> 
- <img src="screenshots/desktop 4.png" width="590px" title="If credentials are not correct screen"/>
- <img src="screenshots/mobile 4.png" width="190px" title="If credentials are not correct screen"/> 
-</p>
-
-<p> After a successful login  <br/> 
- <img src="screenshots/desktop 5.png" width="590px" title="After a successful login screen"/>
- <img src="screenshots/mobile 5.png" width="190px" title="After a successful login screen"/> 
-</p>
-
-<p> When a new user joins <br/> 
- <img src="screenshots/desktop 6.png" width="590px" title="When a new user joins screen"/>
- <img src="screenshots/mobile 6.png" width="190px" title="When a new user joins screen"/> 
-</p>
