@@ -1,5 +1,5 @@
 {
-  "name": "truffle-react-simple-tic-tac-toe-dapp",
+  "name": "ethereum-react-simple-tic-tac-toe-dapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anijitsahu/truffle-react-simple-tic-tac-toe-dapp.git"
+    "url": "git+https://github.com/anijitsahu/ethereum-react-simple-tic-tac-toe-dapp.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
    "bugs": {
-    "url": "https://github.com/anijitsahu/truffle-react-simple-tic-tac-toe-dapp/issues"
+    "url": "https://github.com/anijitsahu/ethereum-react-simple-tic-tac-toe-dapp/issues"
   },
-  "homepage": "https://github.com/anijitsahu/truffle-react-simple-tic-tac-toe-dapp#readme",
+  "homepage": "https://github.com/anijitsahu/ethereum-react-simple-tic-tac-toe-dapp#readme",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.7.7",
