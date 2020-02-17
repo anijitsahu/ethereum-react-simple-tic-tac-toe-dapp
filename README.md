@@ -33,8 +33,8 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 
 ## Installation
 
-1. Clone the repository using `git clone https://github.com/anijitsahu/react-app-simple-chat-app.git` from `Git Bash / Command Prompt`
-2. Navigate inside the directory by `cd react-app-simple-chat-app`
+1. Clone the repository using `git clone https://github.com/anijitsahu/truffle-react-simple-tic-tac-toe-dapp.git` from `Git Bash / Command Prompt`
+2. Navigate inside the directory by `cd truffle-react-simple-tic-tac-toe-dapp`
 3. Install all the necessary dependecies by using `npm install` 
 4. Generate the build by `npm run dev` <br/>
 5. Open another `Command Prompt` and Run it as Administrator (in Windows)  and navigate to the same directory `react-app-simple-chat-app`
