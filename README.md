@@ -22,13 +22,13 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 
 
 <ul>
- <li>All the user moves, computer moes are stored in the [Solidity](https://solidity.readthedocs.io/en/v0.6.2/) Smart Contract. As a result when you *refresh the page* you will get the current state of the game. </li>
- <li>No move is *lost*.</li>
+ <li>All the user moves, computer moes are stored in the <a href="https://solidity.readthedocs.io/en/v0.6.2/">Solidity</a> Smart Contract. As a result when you <i>refresh the page</i> you will get the current state of the game. </li>
+ <li>No move is <b>lost</b>.</li>
 </ul>
 
  
 <ul>
- <li> Communication with the Smart Contracts is supported using **JSON RPC** by Web3 JS <a href="https://web3js.readthedocs.io/en/v1.2.6/">Socket.io</a>  
+ <li> Communication with the Smart Contracts is supported using <b>JSON RPC</b> by <a href="https://web3js.readthedocs.io/en/v1.2.6/">Web3 JS</a>  
 </ul>  
 
 ## Installation
@@ -36,11 +36,12 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 1. Clone the repository using `git clone https://github.com/anijitsahu/react-app-simple-chat-app.git` from `Git Bash / Command Prompt`
 2. Navigate inside the directory by `cd react-app-simple-chat-app`
 3. Install all the necessary dependecies by using `npm install` 
-4. Navigate to the directory `cd server`
-5. Run the server by `node server.js`
-6. Open the `2` web browser and type`http://localhost:3000` in the address bar to load the application in each of them
-7. In one browser login with username `anijit` and password `anijit123`
-8. In another one login with username `jeetm` and password `jeetm76` and enjoy chatting
+4. Generate the build by `npm run dev` <br/>
+5. Open another `Command Prompt` and Run it as Administrator (in Windows)  and navigate to the same directory `react-app-simple-chat-app`
+6. In the second Command prompt, run the *Truffle Development network* by `truffle develop`
+7. In the second Command prompt, deploy the blockchain by `truffle migrate`
+8. Now in a Web browser navigate to `http://localhost:8081` and enjoy the TicTacToe game
+9. If the game ended and you want to play it again, in the second command prompt hit `Ctrl + C` and then run `truffle migrate --reset`
 
  
 *tested with <img src="screenshots/chrome.png" width="20px" title="Google Chrome">Google Chrome v70 and <img src="screenshots/firefox.png" width="25px" title="Firefox Developer edition">Mozilla Firefox Developer Editon*  
