@@ -1,5 +1,5 @@
 {
-  "name": "truffle-hello",
+  "name": "truffle-react-simple-tic-tac-toe-dapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,9 +8,17 @@
     "serve": "parcel serve public/index.html --no-cache --no-source-maps --no-hmr --port 8081",
     "dev": "parcel serve public/index.html --no-hmr --port 8081"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anijitsahu/truffle-react-simple-tic-tac-toe-dapp.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+   "bugs": {
+    "url": "https://github.com/anijitsahu/truffle-react-simple-tic-tac-toe-dapp/issues"
+  },
+  "homepage": "https://github.com/anijitsahu/truffle-react-simple-tic-tac-toe-dapp#readme",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.7.7",
