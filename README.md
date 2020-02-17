@@ -52,13 +52,13 @@ Some screens of the application is given below for better understanding.
 Desktop as well as Mobile version of the screenshots are given side by side.
 
 <p> Game Screen <br/> 
- <img src="screenshots/desktop(1).png" width="590px" title="Game screen"/>
- <img src="screenshots/mobile(1).png" width="190px" title="Game screen"/> 
+ <img src="screenshots/desktop (1).png" width="590px" title="Game screen"/>
+ <img src="screenshots/mobile (1).png" width="190px" title="Game screen"/> 
 </p>
  
  <p> Game Result Screen <br/> 
- <img src="screenshots/desktop(2).png" width="590px" title="Game Result Screen screen"/>
- <img src="screenshots/mobile(2).png" width="190px" title="Game Result Screen screen"/> 
+ <img src="screenshots/desktop (2).png" width="590px" title="Game Result Screen screen"/>
+ <img src="screenshots/mobile (2).png" width="190px" title="Game Result Screen screen"/> 
 </p>
 
 
